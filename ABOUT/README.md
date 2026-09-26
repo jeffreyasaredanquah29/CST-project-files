@@ -14,7 +14,7 @@ Utilized electromagnetic theory to construct a numerical model for E-field inten
 
 
 # Section 3: 3D Electromagnetic Simulation (CST Studio Suite)
-* Brought the design into **CST Studio Suite** to run full 3D electromagnetic simulations.
+* Brought the design into **CST Studio Suite** to run full 3D electromagnetic simulations. The modeling was done by creating a simple torus structure with a gap where the port is inserted.
 * **Goal:** Compare simulated data directly against the analytical estimations from MATLAB to find where the theoretical model broke down.
 
 # Section 4: CST Alignment (Attempt 2)
@@ -24,5 +24,5 @@ Utilized electromagnetic theory to construct a numerical model for E-field inten
  # Section 5: CST adjustment
    Improved gain through tuning capacitor at port gap resonance formula called for a capacitance of 0.36pF
 
-  # Section 5: MATLAB capacitive tuning
+  # Section 6: MATLAB capacitive tuning
   With the capacitive correction being implemented at the port in CST. The next logical thing is to try to simulate similarly with the MATLAB model Input impedance. Including a tuning capacitance yielded an improved S11 response and cleaner curves; however, it required a smaller capacitance value than CST, differing by a factor of roughly 100.
