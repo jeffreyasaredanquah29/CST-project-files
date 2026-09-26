@@ -1,0 +1,58 @@
+%Jeffrey Asaredanquah
+%Project 1: Loop Antenna Q-factor analysis
+% 6/25/2026
+
+clear;
+disp(datetime)
+clf;
+
+%---------------- Assumptions & Definitions-----------
+Z0 = 50; %Transmission line impedance
+%Zs=   % source impedance
+%Zin =   %Antenna Input impedance(this may not be predefined...the rest are)
+%U0 =  % Isometric antenna radiation intensity constant
+%J = % Current source equation
+M = 0; % Magnetic current source equation
+f= 2.4e6 ;% frequency input on VNA in GHz
+w = 2*pi*f; % angular frequency
+dia_const = 0.77; %Coax diaelectric constant
+C = 300e6; % speed of light
+C_d = 300e6 * dia_const; % speed of light through coax medium
+wave_num = w/C_d; % wavenumber k present in greenes theorem solution for A
+phi_max = 2*pi;
+mu = 4*pi* 1e-7;
+cA = 0.003; % cross sectional area of wire is 3mm
+cond = 5.8e7; % Conductivity of copper(material of outer coax shield)
+
+
+const= (1.25e-6)/(4*pi);
+I_0 = 1; % Initial current input of VNA in amps
+N = 1001; % Linspace iterations
+PhiTheta_n = linspace(0,phi_max,N); % phi_n array from 0 to 360
+a = 0.1; % Radius of loop Antenna in meters
+l_circum= 2*pi*a;
+dl = (2*pi*a)/N; % dl component of A integral
+r = zeros(3,N); % loop is Assumed to be centered on origin. source cordinate is the origin
+r_prime = [a*cos(PhiTheta_n);a*sin(PhiTheta_n);zeros(1,N)]; % this r' encompasses the entire circe
+r_vec = r-r_prime;
+r_mag = vecnorm(r_vec,2,1); % magnitude of distance
+r_mag(r_mag== 0) = a; % conditional to avoid divided by 0 error
+A_r = (I_0*PhiTheta_n).*(exp(-1i*wave_num*r_mag)/r_mag)* dl;
+Cap = 0.3e-10;
+int_imp = 377; %Intrinsic Impedance of free space
+
+
+
+
+
+
+%-------------E and H derrivations for power density(use greens function solution)---------------
+A_j = sum(A_r); % Current source contribution to Auxillary potential "A"
+F_j = 0;  % Current source contribution to Auxillary potential "F"
+A_m = 0; % Magnetic source contribution to Auxillary potential "A"
+F_m = 0; % Magnetic source contribtion to Auxillary potential "F"
+
+A_r = A_j + A_m;
+F= F_j + F_m;
+E = -1i*w*A_r; % Equation for Electric field
+F = 0;
