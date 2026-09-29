@@ -3,6 +3,9 @@
 An engineering project focused on analyzing the fundamental electromagnetic characteristics of a circular loop antenna. 
 This project bridges theoretical wave propagation with practical computational methods,  utilizing numerical scripts and 3D simulation to evaluate performance metrics like radiation intensity,Antenna Impedance, and S11.
 
+# NOTE THIS IS ONLY A SUMMARY OF THE PROJECT. For the full GitHub repository containing  files, please click below:
+[https://github.com/jeffreyasaredanquah29/CST-project-files/edit/main/ABOUT/README.md](https://github.com/jeffreyasaredanquah29/CST-project-files/tree/main)
+
 ---
 
 # Section 1: The Analytical MATLAB Foundation
